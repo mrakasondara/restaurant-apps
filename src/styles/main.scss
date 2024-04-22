@@ -1,109 +1,155 @@
-$primary: #5356FF;
-$secondary: beige;
+$primary: #5356ff;
+$secondary: #f5f5dc;
 
-*,body,html{
+*,
+body,
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   position: relative;
   background-color: $secondary;
 }
-a.skip{
+a.skip {
   position: absolute;
   z-index: 40;
   color: $primary;
   background-color: $secondary;
   padding: 8px 12px;
   text-decoration: none;
-  font-family: 'Nunito Sans',sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   top: -50px;
-  transition: .5s ease-in-out;
-}a.skip:focus{
+  transition: 0.5s ease-in-out;
+}
+a.skip:focus {
   top: 0;
 }
 
-header{
+header {
+  display: flex;
+  app-bar {
+    background: $primary;
+    padding: 10px;
     display: flex;
-    app-bar{
-      background: $primary;
-      padding: 10px;
-      display: flex;
-      width: 100%;
-      justify-content: space-around;
-      align-items: center;
-      position: relative;
-      h1{
-        font-family: 'Poppins', sans-serif;
-        margin: 0 auto;
-        @media screen and (min-width: 480px) {
-          margin: 0;
-        }
-        color: white;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      margin: 0 auto;
+      @media screen and (min-width: 480px) {
+        margin: 0;
       }
-       nav{
-        display: flex;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 30%;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Nunito Sans', sans-serif;
-        background-color: $primary;
-        z-index: 10;
-        transform: translateX(-270px);
-        transition:  transform .5s ease-in-out;
-        @media screen and (min-width: 480px) {
-          position: relative;
-          width: 50%;
-          justify-content: flex-end;
-          background-color: transparent;
-          transform: translateX(0);
-        }
-        ul{
-          display: flex;
-          flex-direction: column;
-          @media screen and (min-width: 480px){
-            flex-direction: row;
-          }
-          li{
-           display: flex;
-           list-style-type: none;
-          }
-          a{
-            text-decoration: none;
-            color: white;
-            min-width: 44px;
-            min-height: 44px;
-            line-height: 44px;
-            text-align: center;
-            padding: 7px 5px;
-            transition: .5s ease-in-out;
-          }a:hover{
-            color: black;
-          }
-        }
-       }.open{
-        transform: translateX(0);
-       }
-       button{
-        background: none;
-        min-width: 44px;
-        min-height: 44px;
-        border: none;
-        @media screen and (min-width: 480px) {
-            display: none;
-        }
-       }:hover{
-        color: white;
-       }
-       
+      color: white;
     }
+    nav {
+      display: flex;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30%;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: $primary;
+      z-index: 10;
+      transform: translateX(-270px);
+      transition: transform 0.5s ease-in-out;
+      @media screen and (min-width: 480px) {
+        position: relative;
+        width: 50%;
+        justify-content: flex-end;
+        background-color: transparent;
+        transform: translateX(0);
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        @media screen and (min-width: 480px) {
+          flex-direction: row;
+        }
+        li {
+          display: flex;
+          list-style-type: none;
+        }
+        a {
+          text-decoration: none;
+          color: white;
+          min-width: 44px;
+          min-height: 44px;
+          line-height: 44px;
+          text-align: center;
+          padding: 7px 5px;
+          transition: 0.5s ease-in-out;
+        }
+        a:hover {
+          color: black;
+        }
+      }
+    }
+    .open {
+      transform: translateX(0);
+    }
+    button {
+      background: none;
+      min-width: 44px;
+      min-height: 44px;
+      border: none;
+      @media screen and (min-width: 480px) {
+        display: none;
+      }
+    }
+    :hover {
+      color: white;
+    }
+  }
 }
 
-jumbotron-app{
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary;
+  display: grid;
+  width: 100%;
+  h3 {
+    font-family: 'Poppins', sans-serif;
+    margin: 7px auto 0;
+    letter-spacing: 2px;
+    font-size: 24px;
+  }
+
+  alert-app {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    z-index: 99;
+    #alert {
+      display: none;
+      font-family: 'Nunito Sans', sans-serif;
+      border-radius: 10px;
+      padding: 10px;
+      transition: none;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background-color: #ffffff;
+    }
+    #alert.active {
+      display: flex;
+    }
+    .success {
+      border: 2px solid lightgreen;
+    }
+    .error {
+      border: 2px solid red;
+    }
+  }
+
+  jumbotron-app {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,108 +163,345 @@ jumbotron-app{
     background-image: url('../public/images/heros/hero-image_2.jpg');
     background-position: center;
     background-size: cover;
-    h2{
-        font-family: 'Poppins', sans-serif;
-        font-size: 27px;
-        letter-spacing: 4px;
-        color: $secondary;
-        text-align: center;
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 27px;
+      letter-spacing: 4px;
+      color: $secondary;
+      text-align: center;
     }
-}
-main{
-  display: flex;
-  flex-direction: column;
-  background-color: $secondary;
-    .container{
-        padding: 8px 15px;
-        display: grid;
+  }
+  restaurant-list {
+    display: grid;
+    padding: 8px 16px;
+    grid-template-columns: repeat(2, 1fr);
+    @media screen and (min-width: 648px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (min-width: 864px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    column-gap: 15px;
+    row-gap: 20px;
+    margin-top: 2rem;
+    h6 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 18px;
+      color: red;
+    }
+    restaurant-item {
+      position: relative;
+      display: flex;
+      font-family: 'Nunito Sans', sans-serif;
+      flex-direction: column;
+      background-color: whitesmoke;
+      box-shadow: 0 0 8px 1px gray;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      color: $secondary;
+      overflow: hidden;
+      img.thumb {
         width: 100%;
-        h3{
-            font-family: 'Poppins',sans-serif;
-            margin: 0 auto;
-            letter-spacing: 2px;
-            font-size: 24px;
+        min-height: 50%;
+        border-radius: 15px;
+      }
+      h4.name {
+        color: $primary;
+        font-size: 20px;
+        font-family: 'Poppins', sans-serif;
+        a {
+          text-decoration: none;
+          color: inherit;
         }
-    restaurant-list{
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
+      }
+      div.desc {
+        display: -webkit-box;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: elipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        width: 100%;
+        height: 50%;
+        text-align: justify;
+        color: gray;
+      }
+      p.city {
+        position: absolute;
+        background-color: $primary;
+        color: white;
+        padding: 2px 10px;
+        border-radius: 10px;
+        top: 1rem;
+        left: 1rem;
+      }
+    }
+  }
+  restaurant-detail {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 10px 16px;
+    font-family: 'Poppins', sans-serif;
+    img.thumb {
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 8px;
       @media screen and (min-width: 648px) {
-          grid-template-columns: repeat(3,1fr);
+        width: 70%;
       }
       @media screen and (min-width: 864px) {
-          grid-template-columns: repeat(4,1fr);
-      }
-      column-gap: 15px;
-      row-gap: 20px;
-      margin-top: 2rem;
-      restaurant-item{
-          position: relative;
-          display: flex;
-          font-family: 'Nunito Sans',sans-serif;
-          flex-direction: column;
-          background-color: whitesmoke;
-          box-shadow: 0 0 8px 1px gray;
-          gap: 10px;
-          padding: 10px;
-          border-radius: 10px;
-          color: $secondary;
-          overflow: hidden;
-          img.thumb{
-              width: 100%;
-              min-height: 50%;
-              border-radius: 15px;
-          }
-          h4.name{
-              color: $primary;
-              font-size: 21px;
-              font-family: 'Poppins',sans-serif;
-          }
-          div.desc{
-            display: -webkit-box;
-              margin: 0;
-              overflow: hidden;
-              text-overflow: elipsis;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 5;
-              width: 100%;
-              height: 50%;
-              text-align: justify;
-              color: gray;
-          }
-          p.city{
-              position: absolute;
-              background-color: $primary;
-              color: white;
-              padding: 2px 10px;
-              border-radius: 10px;
-              top: 1rem;
-              left: 1rem;
-          }
+        width: 60%;
       }
     }
-    }
-    quotes-app{
+    .header {
       display: flex;
-      flex-direction: column;
-      width: 100%;
-      justify-content: center;
-      padding: 10px 14px;
-      gap: 1rem;
+      justify-content: space-between;
       align-items: center;
-      margin: 5rem 0;
-      h6{
-        font-family: 'Spirax', sans-serif;
-        font-size: 25px;
-        text-align: center;
+      margin-top: 10px;
+      h4 {
+        font-size: 22px;
       }
-      p{
+      p {
+        margin-right: 8px;
+        font-size: 16px;
+        span {
+          font-weight: 800;
+        }
+      }
+    }
+    h5.city {
+      font-weight: 600;
+    }
+    .desc {
+      margin: 8px 0;
+      p {
+        font-size: 15px;
         font-family: 'Nunito Sans', sans-serif;
       }
     }
+    .menu {
+      margin: 10px 0;
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      .drinks,
+      .foods {
+        background-color: #ffffff;
+        box-shadow: 0 0 1px 1px black;
+        border-radius: 10px;
+        padding: 8px 10px;
+        position: relative;
+        h6 {
+          font-size: 15px;
+        }
+      }
+      ul {
+        padding-left: 2rem;
+        height: 0;
+        overflow: hidden;
+        transition: all 1.2s ease-in-out;
+      }
+      .open {
+        height: 100%;
+      }
+      span#btn-accordion-foods,
+      span#btn-accordion-drinks {
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        font-weight: 800;
+        transition: all 0.8s ease;
+      }
+      .rotate {
+        transform: rotateX(180deg);
+      }
+      span#btn-accordion-foods,
+      span#btn-accordion-drinks:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  #wrapper {
+    display: flex;
+    background-color: #ffffff;
+    flex-direction: column;
+    padding: 8px 16px;
+    margin: 0 auto;
+    width: 95%;
+    font-family: 'Poppins', sans-serif;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 1px 1px black;
+    h6 {
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+    customer-reviews {
+      display: grid;
+      font-size: 15px;
+      padding: 7px 15px;
+      background-color: $secondary;
+      border-radius: 10px;
+      .header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .name {
+          font-weight: 700;
+        }
+        .date {
+          font-size: 13px;
+        }
+      }
+      .message {
+        font-family: 'Nunito Sans', sans-serif;
+      }
+    }
+    add-reviews {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: $secondary;
+        input {
+          padding: 7px 6px;
+          width: 30%;
+          @media screen and (min-width: 646px) {
+            width: 20%;
+          }
+          border-radius: 10px;
+          height: 20%;
+          outline: none;
+          border: 1px solid black;
+          transition: 0.6s ease-in-out;
+          font-family: 'Poppins', sans-serif;
+        }
+        :focus {
+          border: 1px solid $primary;
+        }
+        textarea {
+          padding: 10px;
+          border-radius: 10px;
+          outline: none;
+          border: 1px solid black;
+          resize: none;
+          transition: 0.6s ease-in-out;
+          font-size: 14px;
+          font-family: 'Nunito Sans', sans-serif;
+        }
+        button {
+          width: 20%;
+          padding: 7px;
+          background-color: $primary;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          color: $secondary;
+          transition: 0.7s ease-in-out;
+          cursor: pointer;
+          @media screen and (min-width: 646px) {
+          }
+        }
+        :hover {
+          background-color: transparent;
+          border: 1px solid $primary;
+          color: black;
+        }
+      }
+    }
+  }
+  #likeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    padding: 20px;
+    right: 10px;
+    button {
+      cursor: pointer;
+      padding: 7px;
+      background-color: $primary;
+      border: none;
+      border-radius: 50%;
+      text-align: center;
+      span {
+        font-size: 30px;
+        color: white;
+        transition: 0.8s ease-in-out;
+      }
+    }
+    :hover span {
+      color: red;
+    }
+    .liked span {
+      color: red;
+    }
+    .liked:hover span {
+      color: white;
+    }
+  }
+  quotes-app {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    padding: 10px 14px;
+    gap: 1rem;
+    align-items: center;
+    margin: 5rem 0;
+    h6 {
+      font-family: 'Spirax', sans-serif;
+      font-size: 25px;
+      text-align: center;
+    }
+    p {
+      font-family: 'Nunito Sans', sans-serif;
+    }
+  }
 }
 
-footer{
-  app-footer{
+loading-app {
+  position: absolute;
+  top: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.034);
+  .alert {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 20px;
+    background-color: $primary;
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 128px;
+      height: 128px;
+    }
+    h6 {
+      font-size: 20px;
+      font-family: 'Poppins', sans-serif;
+      color: #fafafa;
+    }
+  }
+}
+
+footer {
+  app-footer {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,10 +1,11 @@
 class RestaurantList extends HTMLElement {
   constructor() {
-    super();
-    this.render();
+    super()
+    this.render()
   }
+
   render() {
-    this.innerHTML += "";
+    this.innerHTML += ''
   }
 }
-customElements.define("restaurant-list", RestaurantList);
+customElements.define('restaurant-list', RestaurantList)
