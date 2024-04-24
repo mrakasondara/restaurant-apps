@@ -2,9 +2,9 @@ import CONFIG from '../../globals/config'
 
 const createRestaurantItemTemplate = function (restaurant) {
   return `
-    <img class="thumb" src=${CONFIG.BASE_IMAGE_URL}/medium/${restaurant.pictureId} alt="gambar restaurant">
-    <h4 class="name" tabindex="0">
-    <a href=/#/detail/${restaurant.id}>${restaurant.name}</a></h4>
+    <img class="thumb" src=${CONFIG.BASE_IMAGE_URL}/medium/${restaurant.pictureId} alt="gambar restaurant" loading="lazy">
+    <h4 class="name">
+    <a href=/#/detail/${restaurant.id} aria-label="restaurant name"  id="restaurant-name">${restaurant.name}</a></h4>
     <div class="desc">
         <p>
             ${restaurant.description}
@@ -20,12 +20,16 @@ const createRestaurantDetailTemplate = function (restaurant) {
       restaurant.pictureId
     } alt="gambar restaurant">
     <div class="header">
-        <h4 class="name" tabindex="0">${restaurant.name}</h4>
-        <p>⭐️<span class="rating">${restaurant.rating}</span></p>
+        <h4 class="name" tabindex="0" aria-label="restaurant name">${
+          restaurant.name
+        }</h4>
+        <p>⭐️<span class="rating" id="rating" aria-label="restaurant rating" tabindex="0">${
+          restaurant.rating
+        }</span></p>
     </div>
-    <h5 class="city" tabindex="0">${restaurant.city} - ${
-      restaurant.address
-    }</h5>
+    <h5 class="city" tabindex="0" aria-label="restaurant address">${
+      restaurant.city
+    } - ${restaurant.address}</h5>
     <div class="desc">
         <p>${restaurant.description}</p>
     </div>
@@ -34,9 +38,7 @@ const createRestaurantDetailTemplate = function (restaurant) {
             <h6>Drinks Menu</h6>
             <ul id="drinks">
                 ${restaurant.menus.drinks
-                  .map((drink) => {
-                    return `<li>${drink.name}</li>`
-                  })
+                  .map((drink) => `<li>${drink.name}</li>`)
                   .join('')}
             </ul>
             <span class="material-symbols-outlined" id="btn-accordion-drinks" data-target="drinks">expand_more</span>
@@ -45,9 +47,7 @@ const createRestaurantDetailTemplate = function (restaurant) {
             <h6>Food Menu</h6>
             <ul id="foods">
                 ${restaurant.menus.foods
-                  .map((food) => {
-                    return `<li>${food.name}</li>`
-                  })
+                  .map((food) => `<li>${food.name}</li>`)
                   .join('')}
             </ul>
             <span class="material-symbols-outlined" id="btn-accordion-foods" data-target="foods">expand_more</span>
@@ -83,13 +83,15 @@ const createLikedButtonTemplate = function () {
 const createAlertError = function (message) {
   return `
   <div id="alert" class="error">
-      <p id="alert-message">${message}</p>
+    <span class="material-symbols-outlined">error</span>
+    <p id="alert-message">${message}</p>
   </div>
   `
 }
 const createAlertSuccess = function (message) {
   return `
-  <div id="alert" class="success active">
+  <div id="alert" class="success">
+    <span class="material-symbols-outlined">check_circle</span>
       <p id="alert-message">${message}</p>
   </div>
   `

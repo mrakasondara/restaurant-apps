@@ -1,27 +1,27 @@
-import CONFIG from '../scripts/globals/config'
 import { createRestaurantItemTemplate } from '../scripts/views/templates/template-creator'
-class RestaurantItem extends HTMLElement {
-  _restaurant = {
-    id: null,
-    name: null,
-    description: null,
-    pictureId: null,
-    city: null,
-  }
 
+class RestaurantItem extends HTMLElement {
   constructor() {
     super()
   }
+
   set restaurant(value) {
-    this._restaurant = value
-    this.render()
-  }
-  get restaurant() {
-    return this._restaurant
+    this._saveData(value)
   }
 
-  render() {
-    this.innerHTML += createRestaurantItemTemplate(this._restaurant)
+  _saveData(value) {
+    const restaurant = {
+      id: value.id,
+      name: value.name,
+      description: value.description,
+      pictureId: value.pictureId,
+      city: value.city,
+    }
+    return this.render(restaurant)
+  }
+
+  render(restaurant) {
+    this.innerHTML += createRestaurantItemTemplate(restaurant)
   }
 }
 

@@ -1,0 +1,30 @@
+{
+  "id": "restaurants-app-pwa",
+  "start_url": "./index.html",
+  "name": "restaurants-app",
+  "short_name": "restaurants",
+  "description": "Recomendation Restaurants",
+  "display": "standalone",
+  "background_color": "#f5f5dc",
+  "theme_color": "#5356FF",
+  "icons": [
+    {
+      "src": "images/icons/16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icons/32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icons/256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

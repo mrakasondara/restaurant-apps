@@ -46,13 +46,12 @@ header {
       color: white;
     }
     nav {
-      display: flex;
       position: absolute;
+      display: flex;
       left: 0;
       top: 0;
       width: 30%;
       justify-content: center;
-      align-items: center;
       font-family: 'Nunito Sans', sans-serif;
       background-color: $primary;
       z-index: 10;
@@ -136,16 +135,18 @@ main {
       font-size: 17px;
       font-weight: 700;
       letter-spacing: 1px;
-      background-color: #ffffff;
+      gap: 10px;
+      color: #fafafa;
+      border: 2px solid $primary;
     }
     #alert.active {
       display: flex;
     }
     .success {
-      border: 2px solid lightgreen;
+      background-color: lightgreen;
     }
     .error {
-      border: 2px solid red;
+      background-color: red;
     }
   }
 
@@ -188,6 +189,10 @@ main {
       font-family: 'Nunito Sans', sans-serif;
       font-size: 18px;
       color: red;
+      text-align: center;
+      padding: 10px 12px;
+      background-color: rgb(248, 248, 36);
+      border-radius: 10px;
     }
     restaurant-item {
       position: relative;
@@ -213,6 +218,8 @@ main {
         a {
           text-decoration: none;
           color: inherit;
+          min-height: 44px;
+          line-height: 44px;
         }
       }
       div.desc {
@@ -373,7 +380,8 @@ main {
         background-color: $secondary;
         input {
           padding: 7px 6px;
-          width: 30%;
+          width: 50%;
+          min-height: 44px;
           @media screen and (min-width: 646px) {
             width: 20%;
           }
@@ -399,6 +407,7 @@ main {
         }
         button {
           width: 20%;
+          min-height: 44px;
           padding: 7px;
           background-color: $primary;
           border-radius: 10px;
@@ -482,13 +491,19 @@ loading-app {
     display: flex;
     flex-direction: column;
     width: 50%;
+    @media screen and (min-width: 646px) {
+      width: 40%;
+    }
+    @media screen and (min-width: 864px) {
+      width: 25%;
+    }
     gap: 20px;
     background-color: $primary;
     border-radius: 10px;
     padding: 10px;
     justify-content: center;
     align-items: center;
-    img {
+    img.loading {
       width: 128px;
       height: 128px;
     }
@@ -496,6 +511,7 @@ loading-app {
       font-size: 20px;
       font-family: 'Poppins', sans-serif;
       color: #fafafa;
+      text-align: center;
     }
   }
 }

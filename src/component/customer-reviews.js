@@ -1,30 +1,32 @@
 import { createReviewTemplate } from '../scripts/views/templates/template-creator'
-class CustomerReviews extends HTMLElement {
-  _reviews = {
-    name: null,
-    date: null,
-    review: null,
-  }
 
+class CustomerReviews extends HTMLElement {
   constructor() {
     super()
   }
+
   set reviews(value) {
-    this._reviews = value
-    this.render()
+    this._saveData(value)
   }
-  get reviews() {
-    return this._reviews
+
+  _saveData(value) {
+    const review = {
+      name: value.name,
+      date: value.date,
+      review: value.review,
+    }
+    return this.render(review)
   }
-  render() {
+
+  render(review) {
     this.innerHTML += `
     <div class="reviews">
       <div class="header">
-        <p class="name">${this._reviews.name}</p>
-        <p class="date">${this._reviews.date}</p>
+        <p class="name">${review.name}</p>
+        <p class="date">${review.date}</p>
       </div>
       <div class="message">
-        <p>${this._reviews.review}</p>
+        <p>${review.review}</p>
       </div>
     </div>
     `

@@ -7,7 +7,7 @@ class LoadingApp extends HTMLElement {
   render() {
     this.innerHTML += `
         <div class="alert">
-          <img src="./images/icons/256x256.png"/>
+          <img src="./images/icons/256x256.png" class="loading"/>
           <h6>Mencatat Restaurants</h6>
         </div>
         `

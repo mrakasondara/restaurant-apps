@@ -24,6 +24,11 @@ class App {
     const page = routes[url]
     this._content.innerHTML = await page.render()
     await page.afterRender()
+    const skipLink = document.querySelector('a.skip')
+    skipLink.addEventListener('click', (ev) => {
+      ev.preventDefault()
+      document.querySelector('main#mainContent').focus()
+    })
   }
 }
 export default App

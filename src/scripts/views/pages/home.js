@@ -4,6 +4,8 @@ import QuotesApp from '../../../component/quotes-app'
 import AlertApp from '../../../component/alert-app'
 import changeTitle from '../../utils/change-title'
 import LoadingApp from '../../../component/loading-app'
+import AlertInitiator from '../../utils/alert-initiator'
+
 const Home = {
   async render() {
     return `
@@ -15,19 +17,32 @@ const Home = {
         `
   },
   async afterRender() {
+    const alertContainer = document.querySelector('alert-app')
     changeTitle('Lapaaar | Restaurant Apps')
-    const restaurants = await RestaurantApi.getAllRestaurant()
-    const restaurantList = document.querySelector('restaurant-list')
-    console.log(restaurants)
-    const item = restaurants.map((res) => {
-      const restaurantItem = document.createElement('restaurant-item')
-      restaurantItem.restaurant = res
-      restaurantItem.setAttribute('id', res.id)
-      document.querySelector('loading-app').style.display = 'none'
-      return restaurantItem
-    })
-
-    restaurantList.append(...item)
+    const { error, message, restaurants } =
+      await RestaurantApi.getAllRestaurant()
+    if (!error) {
+      const restaurantList = document.querySelector('restaurant-list')
+      const item = restaurants.map((res) => {
+        const restaurantItem = document.createElement('restaurant-item')
+        restaurantItem.restaurant = res
+        restaurantItem.setAttribute('id', res.id)
+        document.querySelector('loading-app').style.display = 'none'
+        return restaurantItem
+      })
+      AlertInitiator.init({
+        alertContainer,
+        errorStatus: error,
+        message: 'Berhasil mendapatkan data !',
+      })
+      restaurantList.append(...item)
+    } else {
+      AlertInitiator.init({
+        alertContainer,
+        errorStatus: error,
+        message,
+      })
+    }
   },
 }
 export default Home
