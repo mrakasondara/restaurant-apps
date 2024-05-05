@@ -1,13 +1,12 @@
 import API_ENDPOINT from '../../globals/api-endpoint'
 import AddReviewsInitiator from '../../utils/add-reviews-initiator'
 import UrlParser from '../../routes/url-parser'
-import LikeButtonInitiator from '../../utils/like-button-initiator'
+import LikeButtonPresenter from '../../utils/like-button-presenter'
 import AddReviews from '../../../component/add-reviews'
 import CustomerReviews from '../../../component/customer-reviews'
 import RestaurantDetail from '../../../component/restaurant-detail'
 import {
   createReviewTemplate,
-  createLikeButtonTemplate,
 } from '../templates/template-creator'
 import changeTitle from '../../utils/change-title'
 import AlertInitiator from '../../utils/alert-initiator'
@@ -41,7 +40,7 @@ const Detail = {
       restaurantDetail.restaurant = restaurant
       document.querySelector('loading-app').style.display = 'none'
       changeTitle(`${restaurant.name} | Lapaaar`)
-      LikeButtonInitiator.init({
+      LikeButtonPresenter.init({
         alertContainer: document.querySelector('alert-app'),
         likeContainer: document.querySelector('#likeContainer'),
         restaurant: {
