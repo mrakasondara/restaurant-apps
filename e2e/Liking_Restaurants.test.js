@@ -1,77 +1,103 @@
-const assert = require("assert");
+const assert = require('assert')
 
-Feature("Liking and Review Restaurants");
+Feature('Liking and Review Restaurants')
 
 Before(({ I }) => {
-  I.amOnPage("/#/favorite");
-});
+  I.amOnPage('/#/favorite')
+})
 
-Scenario("showing empty liked restaurants", ({ I }) => {
-  I.see("Data Favorit Tidak Ada", "h6");
-});
+Scenario('showing empty liked restaurants', ({ I }) => {
+  I.see('Data Favorit Tidak Ada', 'h6')
+})
 
-Scenario("liking one restaurant", async ({ I }) => {
-  I.see("Data Favorit Tidak Ada", "h6");
+Scenario('liking one restaurant', async ({ I }) => {
+  I.see('Data Favorit Tidak Ada', 'h6')
 
-  I.amOnPage("/");
+  I.amOnPage('/')
 
-  I.seeElement(".name a");
-  const firstRestaurant = locate(".name a").first();
-  const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
+  I.seeElement('.name a')
+  const firstRestaurant = locate('.name a').first()
+  const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant)
 
-  I.click(firstRestaurant);
+  I.click(firstRestaurant)
 
-  I.seeElement("#likeButton");
-  I.click("#likeButton");
+  I.seeElement('#likeButton')
+  I.click('#likeButton')
 
-  I.amOnPage("/#/favorite");
-  I.seeElement("restaurant-item");
-  const likedRestaurantTitle = await I.grabTextFrom(".name a");
+  I.amOnPage('/#/favorite')
+  I.seeElement('restaurant-item')
+  const likedRestaurantTitle = await I.grabTextFrom('.name a')
 
-  assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
-});
+  assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle)
+})
 
-Scenario("failed review a restaurant", async ({ I }) => {
-  I.amOnPage("/");
-  I.see("Restaurant List", "h3");
+Scenario('canceled like one restaurant', async ({ I }) => {
+  I.see('Data Favorit Tidak Ada', 'h6')
 
-  I.seeElement(".name a");
-  const firstRestaurant = locate(".name a").first();
-  const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
+  I.amOnPage('/')
 
-  I.click(firstRestaurant);
-  const clickedRestaurantTitle = await I.grabTextFrom(".header .name");
+  I.seeElement('.name a')
+  const firstRestaurant = locate('.name a').first()
 
-  I.seeElement("add-reviews");
-  I.click("form button");
-  I.seeElement("alert-app .error");
+  I.click(firstRestaurant)
 
-  I.fillField("#name", "tester1");
-  I.click("form button");
-  I.seeElement("alert-app .error");
+  I.seeElement('#likeButton')
+  I.click('#likeButton')
 
-  I.fillField("#reviews", "good restaurant");
-  I.click("form button");
-  I.seeElement("alert-app .error");
+  I.amOnPage('/#/favorite')
+  I.seeElement('restaurant-item')
 
-  assert.strictEqual(firstRestaurantTitle, clickedRestaurantTitle);
-});
+  I.seeElement('.name a')
+  I.click(firstRestaurant)
 
-Scenario("success review a restaurant", async ({ I }) => {
-  I.amOnPage("/");
-  I.see("Restaurant List", "h3");
+  I.seeElement('#likeButton')
+  I.click('#likeButton')
 
-  I.seeElement(".name a");
-  const firstRestaurant = locate(".name a").first();
-  const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
+  I.amOnPage('/#/favorite')
+  I.see('Data Favorit Tidak Ada', 'h6')
+})
 
-  I.click(firstRestaurant);
-  const clickedRestaurantTitle = await I.grabTextFrom(".header .name");
+Scenario('failed review a restaurant', async ({ I }) => {
+  I.amOnPage('/')
+  I.see('Restaurant List', 'h3')
 
-  I.fillField("#name", "tester1");
-  I.fillField("#reviews", "good restaurant");
-  I.click("form button");
-  I.seeElement("alert-app .success");
+  I.seeElement('.name a')
+  const firstRestaurant = locate('.name a').first()
+  const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant)
 
-  assert.strictEqual(firstRestaurantTitle, clickedRestaurantTitle);
-});
+  I.click(firstRestaurant)
+  const clickedRestaurantTitle = await I.grabTextFrom('.header .name')
+
+  I.seeElement('add-reviews')
+  I.click('form button')
+  I.seeElement('alert-app .error')
+
+  I.fillField('#name', 'tester1')
+  I.click('form button')
+  I.seeElement('alert-app .error')
+
+  I.fillField('#reviews', 'good restaurant')
+  I.click('form button')
+  I.seeElement('alert-app .error')
+
+  assert.strictEqual(firstRestaurantTitle, clickedRestaurantTitle)
+})
+
+Scenario('success review a restaurant', async ({ I }) => {
+  I.amOnPage('/')
+  I.see('Restaurant List', 'h3')
+
+  I.seeElement('.name a')
+  const firstRestaurant = locate('.name a').first()
+  const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant)
+
+  I.click(firstRestaurant)
+  const clickedRestaurantTitle = await I.grabTextFrom('.header .name')
+
+  I.fillField('#name', 'tester1')
+  I.fillField('#reviews', 'good restaurant')
+  I.click('form button')
+  I.seeElement('alert-app .success')
+
+  assert.strictEqual(firstRestaurantTitle, clickedRestaurantTitle)
+})

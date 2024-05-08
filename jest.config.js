@@ -7,14 +7,14 @@
 const config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
-  testMatch: ["**/tests/**/*.test.[jt]s?(x)"],
+  testMatch: ['**/tests/**/*.test.[jt]s?(x)'],
 
-  setupFiles: ["fake-indexeddb/auto"],
+  setupFiles: ['fake-indexeddb/auto'],
 
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
 
   transform: {
-    "^.+\\.(js|ts)$": "babel-jest",
+    '^.+\\.(js|ts)$': 'babel-jest',
   },
   // Stop running tests after `n` failures
   // bail: 0,
@@ -201,6 +201,6 @@ const config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
+}
 
-module.exports = config;
+module.exports = config

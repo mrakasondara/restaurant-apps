@@ -1,43 +1,43 @@
-import { itActsAsFavoriteRestaurantModel } from "./contracts/favoriteRestaurantContract";
+import { itActsAsFavoriteRestaurantModel } from './contracts/favoriteRestaurantContract'
 
-let favoriteRestaurants = [];
+let favoriteRestaurants = []
 
 const FavoriteRestaurantArray = {
   getRestaurant(id) {
     if (!id) {
-      return;
+      return
     }
 
-    return favoriteRestaurants.find((restaurant) => restaurant.id == id);
+    return favoriteRestaurants.find((restaurant) => restaurant.id == id)
   },
 
   getAllRestaurants() {
-    return favoriteRestaurants;
+    return favoriteRestaurants
   },
 
   putRestaurant(restaurant) {
-    if (!restaurant.hasOwnProperty("id")) {
-      return;
+    if (!restaurant.hasOwnProperty('id')) {
+      return
     }
 
     if (this.getRestaurant(restaurant.id)) {
-      return;
+      return
     }
 
-    favoriteRestaurants.push(restaurant);
+    favoriteRestaurants.push(restaurant)
   },
 
   deleteRestaurant(id) {
     favoriteRestaurants = favoriteRestaurants.filter(
       (restaurant) => restaurant.id != id
-    );
+    )
   },
-};
+}
 
-describe("Favorite Restaurant Array Contract Test Implementation", () => {
+describe('Favorite Restaurant Array Contract Test Implementation', () => {
   afterEach(() => {
-    favoriteRestaurants = [];
-  });
+    favoriteRestaurants = []
+  })
 
-  itActsAsFavoriteRestaurantModel(FavoriteRestaurantArray);
-});
+  itActsAsFavoriteRestaurantModel(FavoriteRestaurantArray)
+})

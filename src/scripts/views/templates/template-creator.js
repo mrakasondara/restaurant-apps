@@ -1,4 +1,4 @@
-import CONFIG from "../../globals/config";
+import CONFIG from '../../globals/config'
 
 const createRestaurantItemTemplate = function (restaurant) {
   return `
@@ -11,14 +11,14 @@ const createRestaurantItemTemplate = function (restaurant) {
         </p>
     </div>
     <p class="city" tabindex="0">${restaurant.city}</p>
-`;
-};
+`
+}
 
 const createRestaurantDetailTemplate = function (restaurant) {
   return `
     <img class="thumb" src=${CONFIG.BASE_IMAGE_URL}/large/${
-    restaurant.pictureId
-  } alt="gambar restaurant">
+      restaurant.pictureId
+    } alt="gambar restaurant">
     <div class="header">
         <h4 class="name" tabindex="0" aria-label="restaurant name">${
           restaurant.name
@@ -39,7 +39,7 @@ const createRestaurantDetailTemplate = function (restaurant) {
             <ul id="drinks">
                 ${restaurant.menus.drinks
                   .map((drink) => `<li>${drink.name}</li>`)
-                  .join("")}
+                  .join('')}
             </ul>
             <span class="material-symbols-outlined" id="btn-accordion-drinks" data-target="drinks">expand_more</span>
         </div>
@@ -48,37 +48,37 @@ const createRestaurantDetailTemplate = function (restaurant) {
             <ul id="foods">
                 ${restaurant.menus.foods
                   .map((food) => `<li>${food.name}</li>`)
-                  .join("")}
+                  .join('')}
             </ul>
             <span class="material-symbols-outlined" id="btn-accordion-foods" data-target="foods">expand_more</span>
         </div>
     </div>
     
-`;
-};
+`
+}
 
 const createReviewTemplate = function (customerReviews, wrapper) {
   const newItem = customerReviews.map((review) => {
-    const newReviewsComponent = document.createElement("customer-reviews");
-    newReviewsComponent.reviews = review;
-    return newReviewsComponent;
-  });
-  return wrapper.append(...newItem);
-};
+    const newReviewsComponent = document.createElement('customer-reviews')
+    newReviewsComponent.reviews = review
+    return newReviewsComponent
+  })
+  return wrapper.append(...newItem)
+}
 
 const createLikeRestaurantButtonTemplate = function () {
   return `
   <button aria-label="like this restaurant" id="likeButton" class="like">
     <span class="material-symbols-outlined">heart_plus</span>
-  </button>`;
-};
+  </button>`
+}
 
 const createUnlikeRestaurantButtonTemplate = function () {
   return `
   <button aria-label="unlike this restaurant" id="likeButton" class="liked">
     <span class="material-symbols-outlined">heart_minus</span>
-  </button>`;
-};
+  </button>`
+}
 
 const createAlertError = function (message) {
   return `
@@ -86,16 +86,16 @@ const createAlertError = function (message) {
     <span class="material-symbols-outlined">error</span>
     <p id="alert-message">${message}</p>
   </div>
-  `;
-};
+  `
+}
 const createAlertSuccess = function (message) {
   return `
   <div id="alert" class="success">
     <span class="material-symbols-outlined">check_circle</span>
       <p id="alert-message">${message}</p>
   </div>
-  `;
-};
+  `
+}
 
 export {
   createRestaurantDetailTemplate,
@@ -105,4 +105,4 @@ export {
   createUnlikeRestaurantButtonTemplate,
   createAlertSuccess,
   createAlertError,
-};
+}

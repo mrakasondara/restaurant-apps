@@ -1,13 +1,19 @@
 class JumbotronApp extends HTMLElement {
   constructor() {
-    super()
-    this.render()
+    super();
+    this.render();
   }
 
   render() {
     this.innerHTML += `
-       <h2>Cari restaurant terbaikmu!</h2>
-        `
+      <div>
+        <picture>
+          <source media="(max-width: 600px)" srcset="./images/heros/hero-image_2-small.jpg">
+          <img src="./images/heros/hero-image_2-large.jpg" alt="jumbotron image">
+        </picture>
+        <h2>Cari restaurant terbaikmu!</h2>
+      </div>
+        `;
   }
 }
-customElements.define('jumbotron-app', JumbotronApp)
+customElements.define("jumbotron-app", JumbotronApp);
