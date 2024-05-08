@@ -1,3 +1,5 @@
-const unShowSkeletonItem = (skeleton) => skeleton.style.display = 'none'
+const unShowSkeletonItem = function (skeleton) {
+  skeleton.style.display = 'none'
+}
 
 export default unShowSkeletonItem

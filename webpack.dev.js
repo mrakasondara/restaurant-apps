@@ -1,14 +1,12 @@
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const { merge } = require("webpack-merge");
-const path = require("path");
-const common = require("./webpack.common");
+const { merge } = require('webpack-merge')
+const path = require('path')
+const common = require('./webpack.common')
 
 module.exports = merge(common, {
-  mode: "development",
-  devtool: "inline-source-map",
+  mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
-    static: path.resolve(__dirname, "dist"),
+    static: path.resolve(__dirname, 'dist'),
     // open: true,
     port: 8080,
     compress: true,
@@ -19,5 +17,4 @@ module.exports = merge(common, {
       },
     },
   },
-  plugins: [new BundleAnalyzerPlugin()],
-});
+})

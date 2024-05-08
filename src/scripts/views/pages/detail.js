@@ -1,16 +1,16 @@
-import API_ENDPOINT from "../../globals/api-endpoint";
-import AddReviewsInitiator from "../../utils/add-reviews-initiator";
-import UrlParser from "../../routes/url-parser";
-import LikeButtonPresenter from "../../utils/like-button-presenter";
-import AddReviews from "../../../component/add-reviews";
-import CustomerReviews from "../../../component/customer-reviews";
-import RestaurantDetail from "../../../component/restaurant-detail";
-import { createReviewTemplate } from "../templates/template-creator";
-import changeTitle from "../../utils/change-title";
-import AlertInitiator from "../../utils/alert-initiator";
-import FavoriteRestaurantIdb from "../../data/favorite-restaurant-idb";
-import SkeletonDetail from "../../../component/skeleton-detail";
-import unShowSkeletonItem from "../../utils/unshow-skeleton";
+import API_ENDPOINT from '../../globals/api-endpoint'
+import AddReviewsInitiator from '../../utils/add-reviews-initiator'
+import UrlParser from '../../routes/url-parser'
+import LikeButtonPresenter from '../../utils/like-button-presenter'
+import AddReviews from '../../../component/add-reviews'
+import CustomerReviews from '../../../component/customer-reviews'
+import RestaurantDetail from '../../../component/restaurant-detail'
+import { createReviewTemplate } from '../templates/template-creator'
+import changeTitle from '../../utils/change-title'
+import AlertInitiator from '../../utils/alert-initiator'
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb'
+import SkeletonDetail from '../../../component/skeleton-detail'
+import unShowSkeletonItem from '../../utils/unshow-skeleton'
 
 const Detail = {
   async render() {
@@ -24,26 +24,26 @@ const Detail = {
     </div>
     <div id="likeContainer"></div>
     <alert-app></alert-app>
-    `;
+    `
   },
   async afterRender() {
-    const alertContainer = document.querySelector("alert-app");
-    const { id } = UrlParser.parseActiveUrlWithoutCombiner();
-    const response = await fetch(API_ENDPOINT.DETAIL(id));
-    const { error, message, restaurant } = await response.json();
-    unShowSkeletonItem(document.querySelector("skeleton-detail"));
+    const alertContainer = document.querySelector('alert-app')
+    const { id } = UrlParser.parseActiveUrlWithoutCombiner()
+    const response = await fetch(API_ENDPOINT.DETAIL(id))
+    const { error, message, restaurant } = await response.json()
+    unShowSkeletonItem(document.querySelector('skeleton-detail'))
     AlertInitiator.init({
       alertContainer,
       errorStatus: error,
-      message: "Detail restaurant ditemukan",
-    });
+      message: 'Detail restaurant ditemukan',
+    })
     if (!error) {
-      const restaurantDetail = document.querySelector("restaurant-detail");
-      restaurantDetail.restaurant = restaurant;
-      changeTitle(`${restaurant.name} | Lapaaar`);
+      const restaurantDetail = document.querySelector('restaurant-detail')
+      restaurantDetail.restaurant = restaurant
+      changeTitle(`${restaurant.name} | Lapaaar`)
       LikeButtonPresenter.init({
-        alertContainer: document.querySelector("alert-app"),
-        likeContainer: document.querySelector("#likeContainer"),
+        alertContainer: document.querySelector('alert-app'),
+        likeContainer: document.querySelector('#likeContainer'),
         favoriteRestaurants: FavoriteRestaurantIdb,
         restaurant: {
           id: restaurant.id,
@@ -56,25 +56,25 @@ const Detail = {
           pictureId: restaurant.pictureId,
           rating: restaurant.rating,
         },
-      });
-      const form = document.querySelector("form");
+      })
+      const form = document.querySelector('form')
 
-      const wrapper = document.querySelector("#wrapper");
-      const reviewsData = restaurant.customerReviews;
-      createReviewTemplate(reviewsData, wrapper);
+      const wrapper = document.querySelector('#wrapper')
+      const reviewsData = restaurant.customerReviews
+      createReviewTemplate(reviewsData, wrapper)
 
-      const name = document.querySelector("input");
-      const review = document.querySelector("textarea");
-      const oldReviews = document.querySelectorAll("customer-reviews");
+      const name = document.querySelector('input')
+      const review = document.querySelector('textarea')
+      const oldReviews = document.querySelectorAll('customer-reviews')
 
-      AddReviewsInitiator.init({ id, form, name, review, oldReviews, wrapper });
+      AddReviewsInitiator.init({ id, form, name, review, oldReviews, wrapper })
     } else {
       AlertInitiator.init({
         alertContainer,
         errorStatus: error,
         message,
-      });
+      })
     }
   },
-};
-export default Detail;
+}
+export default Detail

@@ -2,7 +2,7 @@ import CONFIG from '../../globals/config'
 
 const createRestaurantItemTemplate = function (restaurant) {
   return `
-    <img class="thumb lazyload" src=${CONFIG.BASE_IMAGE_URL}/medium/${restaurant.pictureId} alt="gambar restaurant" loading="lazy">
+    <img class="thumb lazyload" data-src=${CONFIG.BASE_IMAGE_URL}/medium/${restaurant.pictureId} alt="gambar restaurant">
     <h4 class="name">
     <a href=/#/detail/${restaurant.id} aria-label="restaurant name"  id="restaurant-name">${restaurant.name}</a></h4>
     <div class="desc">
@@ -16,7 +16,7 @@ const createRestaurantItemTemplate = function (restaurant) {
 
 const createRestaurantDetailTemplate = function (restaurant) {
   return `
-    <img class="thumb lazyload" src=${CONFIG.BASE_IMAGE_URL}/large/${
+    <img class="thumb lazyload" data-src=${CONFIG.BASE_IMAGE_URL}/large/${
       restaurant.pictureId
     } alt="gambar restaurant">
     <div class="header">
